@@ -31,5 +31,4 @@ def parse():
             default='~/.archinator/profiles',
             )
 
-    args = parser.parse_args()
-    print args
+    return parser.parse_args().__dict__
