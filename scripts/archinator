@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+# Import archinator libs
+import archinator
+
+def main():
+    '''
+    Execute the Archinator!
+    '''
+    inator = archinator.Archinator()
+    inator.run()
