@@ -19,6 +19,23 @@ def parse():
             help='The location of the image to create')
 
     parser.add_argument(
+            '--size',
+            '-s',
+            default='8192',
+            type=str,
+            dest='size',
+            help=('The size of the image to create in megabytes, defaults '
+                  'to 8192'))
+
+    parser.add_argument(
+            '--format',
+            '-f',
+            default='qcow2',
+            type=str,
+            dest='format',
+            help='The format of the image to create, defaults to qcow2')
+
+    parser.add_argument(
             '--profile',
             '-p',
             default='profile',

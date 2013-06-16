@@ -24,7 +24,7 @@ class Archinator:
         # grub (or probably syslinux)
         print(self.opts)
         location = archinator.qemu.make_image(
-                self.opts['location'],
+                self.opts['image'],
                 self.opts['size'],
                 self.opts['format'])
         nbd = archinator.qemu.connect(location)
