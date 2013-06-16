@@ -37,7 +37,7 @@ class Archinator:
         nbd = archinator.qemu.connect(location)
         if not nbd:
             print('Failed to mount image {0}'.format(location))
-            sys.exit(10)
+            sys.exit(11)
         archinator.parted.mklabel(nbd, 'msdos')
         archinator.parted.mkpart(nbd, 'primary', 'ext4', 1, -1)
         archinator.parted.probe(nbd)
