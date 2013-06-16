@@ -31,7 +31,8 @@ class Archinator:
                 self.opts['size'],
                 self.opts['format'])
         if not location:
-            print('Failed to create image {0}'.format(self.opts['image']))
+            print('Failed to create image {0}, is qemu-img installed?'.format(
+                self.opts['image']))
             sys.exit(10)
         nbd = archinator.qemu.connect(location)
         if not nbd:
