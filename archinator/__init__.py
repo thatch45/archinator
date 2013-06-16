@@ -4,6 +4,8 @@ Create archinator execution objects
 
 # import archinator libs
 import archinator.cli
+import archinator.qemu
+import archinator.parted
 
 class Archinator:
     '''
@@ -22,7 +24,6 @@ class Archinator:
         # Install
         # basic configs
         # grub (or probably syslinux)
-        print(self.opts)
         location = archinator.qemu.make_image(
                 self.opts['image'],
                 self.opts['size'],
