@@ -31,10 +31,7 @@ def make_image(location, size, fmt):
             fmt,
             location,
             size)
-    try:
-        subprocess.check_call(cmd, shell=True)
-    except subprocess.CalledProcessError:
-        return ''
+    subprocess.check_call(cmd, shell=True)
     return location
 
 
