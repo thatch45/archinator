@@ -25,7 +25,7 @@ def make_image(location, size, fmt):
     Create the base vm image
     '''
     full = os.path.abspath(location)
-    if not os.path.isdir(os.path.basename(full)):
+    if not os.path.isdir(os.path.dirname(full)):
         return ''
     cmd = 'qemu-img create -f {0} {1} {2}M'.format(
             fmt,
