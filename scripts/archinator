@@ -9,3 +9,6 @@ def main():
     '''
     inator = archinator.Archinator()
     inator.run()
+
+if __name__ == '__main__':
+    main()
