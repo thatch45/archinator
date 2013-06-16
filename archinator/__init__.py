@@ -1,6 +1,8 @@
 '''
 Create archinator execution objects
 '''
+# Import python libs
+import sys
 
 # import archinator libs
 import archinator.cli
@@ -28,7 +30,13 @@ class Archinator:
                 self.opts['image'],
                 self.opts['size'],
                 self.opts['format'])
+        if not location:
+            print('Failed to create image {0}'.format(self.opts['image']))
+            sys.exit(10)
         nbd = archinator.qemu.connect(location)
+        if not nbd:
+            print('Failed to mount image {0}'.format(location))
+            sys.exit(10)
         archinator.parted.mklabel(nbd, 'msdos')
         archinator.parted.mkpart(nbd, 'primary', 'ext4', 1, -1)
         archinator.parted.probe(nbd)
