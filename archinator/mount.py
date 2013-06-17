@@ -20,7 +20,7 @@ def mount(name, device, mkmnt=False, fstype='', opts='defaults'):
     if fstype:
         args += ' -t {0}'.format(fstype)
     cmd = 'mount {0} {1} {2} '.format(args, device, name)
-    subprocess.call(cmd)
+    subprocess.call(cmd, shell=True)
     return True
 
 
@@ -29,6 +29,6 @@ def umount(name):
     Attempt to unmount a device by specifying the directory it is mounted on
     '''
     cmd = 'umount {0}'.format(name)
-    subprocess.call(cmd)
+    subprocess.call(cmd, shell=True)
     return True
 
