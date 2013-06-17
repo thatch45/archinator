@@ -36,6 +36,15 @@ def parse():
             help='The format of the image to create, defaults to qcow2')
 
     parser.add_argument(
+            '--packages',
+            '--pkg',
+            default=['base'],
+            nargs='*',
+            dest='pkgs',
+            help=('The names of the packages to be installed, defaults to '
+                  '"base"'))
+
+    parser.add_argument(
             '--profile',
             '-p',
             default='profile',
