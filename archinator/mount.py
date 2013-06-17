@@ -11,7 +11,7 @@ def mount(name, device, mkmnt=False, fstype='', opts='defaults'):
     '''
     Mount a device
     '''
-    if isinstance(opts, basestring):
+    if isinstance(opts, str):
         opts = opts.split(',')
     if not os.path.exists(name) and mkmnt:
         os.makedirs(name)
