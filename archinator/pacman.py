@@ -37,6 +37,7 @@ def run_pacman(root, pkgs):
     Execute pacman on the prepared root
     '''
     cmd = ('pacman -Sy --noconfirm -r {0} '.format(root))
+    pkgs.append('grub-bios')
     for pkg in pkgs:
         cmd += '{0} '.format(pkg)
     subprocess.call(cmd, shell=True)
