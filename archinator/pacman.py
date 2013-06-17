@@ -22,14 +22,14 @@ def prep_root(root):
         os.makedirs(dir_)
     tmp = os.path.join(root, 'tmp')
     os.makedirs(tmp)
-    os.chmod(tmp, 1777)
+    os.chmod(tmp, int('1777', 8))
     kdirs = [
             os.path.join(root, 'sys'),
             os.path.join(root, 'proc'),
             ]
     for dir_ in kdirs:
         os.makedirs(dir_)
-        os.chmod(dir_, 0555)
+        os.chmod(dir_, int('555', 8))
 
 
 def run_pacman(root, pkgs):
