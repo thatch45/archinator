@@ -9,6 +9,7 @@ import archinator.cli
 import archinator.qemu
 import archinator.parted
 import archinator.pacman
+import archinator.bconf
 
 class Archinator:
     '''
