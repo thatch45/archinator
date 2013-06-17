@@ -44,5 +44,6 @@ class Archinator:
         archinator.parted.probe(nbd)
         archinator.parted.mkfs('{0}p1'.format(nbd), 'ext4')
         mnt = archinator.qemu.mount(nbd)
-        archinator.pacman.prep_root(mnt)
-        archinator.pacman.run_pacman(mnt, self.opts['pkgs'])
+        root = next(iter(mnt))
+        archinator.pacman.prep_root(root)
+        archinator.pacman.run_pacman(root, self.opts['pkgs'])
