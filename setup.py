@@ -8,7 +8,10 @@ setup(name='archinator',
       author='Thomas S Hatch',
       author_email='thatch45@gmail.com',
       url='https://github.com/thatch45/archinator',
-      packages=['archinator'],
+      packages=[
+          'archinator',
+          'archinator.utils',
+          ],
       scripts=['scripts/archinator'],
      )
 
