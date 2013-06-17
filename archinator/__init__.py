@@ -45,5 +45,8 @@ class Archinator:
         archinator.parted.mkfs('{0}p1'.format(nbd), 'ext4')
         mnt = archinator.qemu.mount(nbd)
         root = next(iter(mnt))
+        mount = mnt[root]
         archinator.pacman.prep_root(root)
         archinator.pacman.run_pacman(root, self.opts['pkgs'])
+        archinator.bconf.fstab(root)
+        archinator.bconf.grub(mount, root)
