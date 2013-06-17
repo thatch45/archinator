@@ -8,6 +8,7 @@ import sys
 import archinator.cli
 import archinator.qemu
 import archinator.parted
+import archinator.pacman
 
 class Archinator:
     '''
@@ -43,3 +44,5 @@ class Archinator:
         archinator.parted.probe(nbd)
         archinator.parted.mkfs('{0}p1'.format(nbd), 'ext4')
         mnt = archinator.qemu.mount(nbd)
+        archinator.pacman.prep_root(mnt)
+        archinator.pacman.run_pacman(mnt, self.opts['pkgs'])
