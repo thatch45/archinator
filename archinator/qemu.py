@@ -43,13 +43,14 @@ def connect(image):
         return ''
     subprocess.call('modprobe nbd max_part=63', shell=True)
     for nbd in glob.glob('/dev/nbd?'):
-        if subprocess.call('fdisk -l {0}'.format(nbd)):
+        if subprocess.call('fdisk -l {0}'.format(nbd), shell=True):
             while True:
                 # Sometimes nbd does not "take hold", loop until we can verify
                 subprocess.call(
-                        'qemu-nbd -c {0} {1}'.format(nbd, image)
+                        'qemu-nbd -c {0} {1}'.format(nbd, image),
+                        shell=True,
                         )
-                if not subprocess.call('fdisk -l {0}'.format(nbd)):
+                if not subprocess.call('fdisk -l {0}'.format(nbd), shell=True):
                     break
             return nbd
     return ''
@@ -116,5 +117,5 @@ def clear(mnt):
     if ret:
         return ret
     for nbd in nbds:
-        subprocess.call('qemu-nbd -d {0}'.format(nbd))
+        subprocess.call('qemu-nbd -d {0}'.format(nbd), shell=True)
     return ret
