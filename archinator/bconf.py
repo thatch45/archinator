@@ -23,12 +23,16 @@ def set_locale(root, locale):
     '''
     set up the locale
     '''
-    pass
+    locale = os.path.join(root, 'etc/locale.gen')
+    with open(locale, 'w+') as fp_:
+        fp_.write(locale)
+    archinator.utils.chroot_cmd(root, 'locale-gen')
 
 def grub(mount, root):
     '''
     Install grub
     '''
     cmd = 'grub-mkconfig -o /boot/grub/grub.cfg'
-    archinator.utils.chroot_cmd(cmd)
+    archinator.utils.chroot_cmd(root, cmd)
     cmd = 'grub-install {0}'.format(mount)
+    archinator.utils.chroot_cmd(root, cmd)
